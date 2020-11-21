@@ -2,9 +2,9 @@ package Player;
 
 public class Player {
     private String playerName;
-    public int playerHealth;
+    private int playerHealth;
     public int playerDamage;
-    private int playerBlocks;
+    private static int playerBlocks;
     public int XP;
     private boolean playerAlive;
     private static int stepCount;
@@ -35,6 +35,20 @@ public class Player {
         stepCount++;
     }
 
+    public static void mine(){
+        playerBlocks++;
+        System.out.println("Добываем блок земли. Количество блоков в инвентаре: " + playerBlocks);
+    }
+
+    public static void install(){
+        if (playerBlocks > 0) {
+            playerBlocks--;
+            System.out.println("Устанавливаем блок. Количество блоков в инвентаре: " + playerBlocks);
+        } else {
+            System.out.println("А что ты собрался ставить? Сначала нужно выкопать хотя бы один блок земли");
+        }
+    }
+
     public static void how(){
         System.out.println("1. \"идти\" - движемся.");
         System.out.println("2. \"добыть\" - выкопать блок.");
@@ -44,6 +58,9 @@ public class Player {
         System.out.println("6. \"взять\" - подобрать выпавший из противника предмет.");
         System.out.println("7. \"как\" - вывести доступные действия.");
     }
+
+
+
 
     //возможно лишнее:
     public static void setStepCount(int stepCount) {
@@ -85,6 +102,15 @@ public class Player {
 
     public int getStepCount() {
         return stepCount;
+    }
+
+    public int getPlayerBlocks() {
+        return playerBlocks;
+    }
+
+    public void setPlayerBlocks(int playerBlocks) {
+        this.playerBlocks = playerBlocks;
+
     }
 
 }

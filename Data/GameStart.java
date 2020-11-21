@@ -39,12 +39,15 @@ public class GameStart {
                 case "идти":
                     Player.move();
                     break;
-            /*case "добыть":
-            case "добыть":
-            case "добыть":
-            case "добыть":
-            case "добыть":
-            case "добыть":*/
+                case "добыть":
+                    Player.mine();
+                    break;
+                case "поставить":
+                    Player.install();
+                    break;
+            /*  case "есть":
+                case "атака":
+                case "взять":*/
                 case "как":
                     Player.how();
                     break;
@@ -52,7 +55,7 @@ public class GameStart {
 
         } while (player1.getStepCount() < 4);
 
-        System.out.println("Ты благополучно выбрался из \"Сонного лабиринта\"! Мои поздравления, " + player1.getPlayerName() + "!!!");
+        System.out.println("\nТы благополучно выбрался из \"Сонного лабиринта\"! Мои поздравления, " + player1.getPlayerName() + "!!!");
 
 
     }
