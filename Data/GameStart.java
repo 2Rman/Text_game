@@ -1,3 +1,4 @@
+import Mob.Mob;
 import Player.Player;
 
 import java.util.Scanner;
@@ -22,8 +23,24 @@ public class GameStart {
         do {
             String action = texter.nextLine();
             Spirit.gameCases(action);
-            
-        } while (player1.getStepCount() < 6);
+            int oneMob = (int) (Math.random() * 2);
+            if ((Player.getStepCount() % 3 == 0) && (Mob.getMobcount() < 2))
+            switch (oneMob) {
+                case 0: {
+                    Mob zombie = new Mob("Зомби", 20, 3);
+                    System.out.println("Я чувствую поблизости врагов... Их " + Mob.getMobcount());
+                    break;
+                }
+
+                case 1: {
+                    Mob skeleton = new Mob("Скелет", 15, 5);
+                    System.out.println("Врагов становится больше... Теперь их " + Mob.getMobcount());
+                    break;
+                }
+            }
+
+
+        } while (Player.getStepCount() < 11);
 
         System.out.println("\nТы благополучно выбрался из \"Сонного лабиринта\"! Мои поздравления, " + player1.getPlayerName() + "!!!");
 

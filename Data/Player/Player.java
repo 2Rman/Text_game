@@ -1,11 +1,12 @@
 package Player;
 
-import Items.Food;
+import Items.*;
+import Mob.*;
 
 public class Player {
     private String playerName;
     private static int playerHealth;
-    public int playerDamage;
+    private static int playerDamage;
     private static int playerBlocks;
     public int XP;
     private boolean playerAlive;
@@ -23,20 +24,19 @@ public class Player {
         this.playerAlive = playerHealth > 0;
     }*/
 
-    public Player(String playerName){
+    public Player(String playerName) {
         this.playerName = playerName;
     }
 
-    public Player(String playerName, int playerHealth){
+    public Player(String playerName, int playerHealth) {
         this.playerHealth = playerHealth;
         this.playerName = playerName;
     }
 
 
-
     public static void move() {
         int oneCase = (int) (Math.random() * 5);
-        switch (oneCase){
+        switch (oneCase) {
             case 0 -> System.out.println("А я уж подумал, ты здесь хочешь остаться навсегда!");
             case 1 -> System.out.println("Конечно! Пойдем!");
             case 2 -> System.out.println("Скорее! Путь неблизкий!");
@@ -48,12 +48,12 @@ public class Player {
     }
 
 
-    public static void mine(){
+    public static void mine() {
         playerBlocks++;
         System.out.println("Добываем блок земли. Количество блоков в инвентаре теперь: " + playerBlocks);
     }
 
-    public static void install(){
+    public static void install() {
         if (playerBlocks > 0) {
             playerBlocks--;
             System.out.println("Устанавливаем блок. Осталось блоков: " + playerBlocks);
@@ -62,21 +62,31 @@ public class Player {
         }
     }
 
-    public static void eat(){
-        if (foodCount > 0){
+    public static void eat() {
+        if (foodCount > 0) {
             Player.playerHealth = Player.playerHealth + Food.pointsToHeal;
+        } else {
+            System.out.println("К сожалению, у тебя нечего есть, а питание святым духом не предусмотрено...");
         }
     }
 
+    public static void attack(String monster){
+        System.out.println("Ты бьешь " + monster + " и наносишь ему " + Player.playerDamage);
+        System.out.println("Теперь у " + monster + " осталось " + Mob.setMobHealth(Mob.getMobHealth() - Player.playerDamage) + " очков жизни!";
+
+    }
+
+    //Дальше геттеросеттеры
     //возможно лишнее:
     public static void setStepCount(int stepCount) {
         Player.stepCount = stepCount;
         System.out.println(stepCount);
     }
 
+    public static int getStepCount() {
+        return stepCount;
+    }
 
-
-    //Дальше геттеры потом сеттеры
 
     public String getPlayerName() {
         return playerName;
@@ -90,6 +100,7 @@ public class Player {
     public int getPlayerHealth() {
         return playerHealth;
     }
+
 
     //возможно лишнее:
     public void setPlayerHealth(int playerHealth) {
@@ -105,16 +116,7 @@ public class Player {
 
     //возможно лишнее:
     public void setPlayerAlive(boolean playerAlive) {
-        this.playerAlive = getPlayerHealth() > 0 ;
+        this.playerAlive = getPlayerHealth() > 0;
 
     }
-
-    public static int getStepCount() {
-        return stepCount;
-    }
-
-    public int getPlayerBlocks() {
-        return playerBlocks;
-    }
-
 }

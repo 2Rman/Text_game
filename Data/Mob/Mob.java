@@ -1,22 +1,38 @@
 package Mob;
 
 public class Mob {
-    private String name;
-    private int health;
+    private static String name;
+    private static int health;
     private int damage;
-    public boolean IsAlive;
-    public static int MobCount;
+    public boolean isAlive;
+    private static int mobCount;
 
     public Mob() {
-        MobCount++;
+        mobCount++;
     }
 
     public Mob(String name, int health, int damage) {
         this.name = name;
         this.health = health;
         this.damage = damage;
-        this.IsAlive = health > 0;
-        MobCount++;
+        this.isAlive = health > 0;
+        mobCount++;
+    }
+
+    public static int getMobcount(){
+        return mobCount;
+    }
+
+    public static String getName(){
+        return Mob.name;
+    }
+
+    public int getMobHealth(){
+        return this.health;
+    }
+
+    public void setMobHealth(int currentHealth){
+        this.health = currentHealth;
     }
 
 }

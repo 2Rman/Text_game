@@ -45,9 +45,7 @@ public class Spirit {
             /*  case "атака" -> Player.attack();
                 case "взять" -> Player.take()*/
         }
-        if (Player.getStepCount() > 3){
-            Mob zombie = new Mob("Зомби",20,3);
-        }
+
     }
 
 }
