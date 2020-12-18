@@ -1,5 +1,5 @@
-import Mob.Mob;
-import Player.Player;
+//import Mob.Mob;
+//import Player.Player;
 
 public class Spirit {
     public static void firstWords(){
@@ -34,18 +34,18 @@ public class Spirit {
         System.out.println("6. \"взять\" - подобрать выпавший из противника предмет.");
         System.out.println("7. \"как\" - вывести доступные действия.");
     }
-
+/*
     public static void gameCases(String playerCase) {
         switch (playerCase) {
             case "идти" -> Player.move();
             case "добыть" -> Player.mine();
             case "поставить" -> Player.install();
             case "есть" -> Player.eat();
-            case "как" -> Spirit.how();
-            /*  case "атака" -> Player.attack();
+            case "как" -> how();
+            case "атака" -> Player.attack(Mob.getMobOnMap(0));  //Реализовать выбор моба из списка!!!
                 case "взять" -> Player.take()*/
         }
 
-    }
 
-}
+
+
